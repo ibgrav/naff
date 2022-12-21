@@ -1,0 +1,26 @@
+{
+  "name": "naff",
+  "version": "0.0.1",
+  "main": "./dist/cjs/index.cjs",
+  "module": "./dist/mjs/index.mjs",
+  "types": "./dist/tsc/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/cjs/index.cjs",
+      "import": "./dist/mjs/index.mjs",
+      "types": "./dist/tsc/index.d.ts"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "vite build"
+  },
+  "devDependencies": {
+    "typescript": "^4.9.4",
+    "vite": "^4.0.3",
+    "vite-plugin-dts": "^1.7.1",
+    "vitest": "^0.26.2"
+  }
+}

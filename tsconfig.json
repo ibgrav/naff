@@ -1,0 +1,24 @@
+{
+  "include": ["**/*.ts", "**/*.tsx", "**/*.cjs", "**/*.js"],
+  "exclude": ["node_modules", "dist"],
+
+  "compilerOptions": {
+    "module": "ESNext",
+    "target": "ESNext",
+    "moduleResolution": "Node",
+
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+
+    "noEmit": true,
+    "strict": true,
+    "allowJs": true,
+    "skipLibCheck": true,
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "useDefineForClassFields": true,
+    "noUncheckedIndexedAccess": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true
+  }
+}
