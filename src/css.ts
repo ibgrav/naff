@@ -1,16 +1,16 @@
 import type { RenderableValue, RenderContext } from "./types";
 import { render } from "./render";
 
-export let IS_HTML = Symbol("html");
+export let IS_CSS = Symbol("css");
 
-export interface HTMLInstance {
-  t: typeof IS_HTML;
+export interface CSSInstance {
+  t: typeof IS_CSS;
   r: (ctx: RenderContext) => string;
 }
 
-export let html = (strings: TemplateStringsArray, ...args: Array<RenderableValue>): HTMLInstance => {
+export let css = (strings: TemplateStringsArray, ...args: Array<RenderableValue>): CSSInstance => {
   return {
-    t: IS_HTML,
+    t: IS_CSS,
     r: (ctx) => strings.map((str, i) => str + render(args[i], ctx)).join(""),
   };
 };

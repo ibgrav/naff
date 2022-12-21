@@ -1,1 +1,1 @@
-# NAFF (not another frontend framework)
+# naff (not another frontend framework)
