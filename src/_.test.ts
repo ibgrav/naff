@@ -1,8 +1,7 @@
 import { test, expect } from "vitest";
 import { render } from "./render";
 import { template } from "./template";
-import { html } from "./html";
-import { css } from "./css";
+import type { GlobalContext } from "./types";
 
 interface MainProps {
   message: string;
@@ -20,11 +19,17 @@ interface DocProps {
   message: string;
 }
 
-const doc = template<DocProps>(({ html, props }) => {
+const doc = template<DocProps>(({ html, css, props }) => {
   return html`<!DOCTYPE html>
+
     <html lang="en">
       <head>
         <title>Hello World!</title>
+        <style>
+          body {
+            margin: 0;
+          }
+        </style>
       </head>
       <body>
         ${main({ message: props.message })}
@@ -33,7 +38,8 @@ const doc = template<DocProps>(({ html, props }) => {
 });
 
 test("doc render", () => {
-  const result = render(doc({ message: "Hello World!" }), { html, css });
+  const ctx: GlobalContext = { styles: "" };
+  const result = render(doc({ message: "Hello World!" }), ctx);
 
   expect(result).toEqual(`<!DOCTYPE html>
     <html lang="en">

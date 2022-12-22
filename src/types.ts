@@ -6,7 +6,12 @@ export type Primitive = null | undefined | boolean | string | number;
 
 export type RenderableValue = Primitive | TemplateInstance | Array<RenderableValue>;
 
+export interface GlobalContext {
+  styles?: string;
+}
+
 export interface RenderContext {
+  ctx: GlobalContext;
   html: typeof html;
   css: typeof css;
 }

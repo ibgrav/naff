@@ -1,11 +1,11 @@
-import type { RenderableValue, RenderContext } from "./types";
+import type { GlobalContext, RenderableValue } from "./types";
 import { render } from "./render";
 
 export let IS_CSS = Symbol("css");
 
 export interface CSSInstance {
   t: typeof IS_CSS;
-  r: (ctx: RenderContext) => string;
+  r: (ctx: GlobalContext) => string;
 }
 
 export let css = (strings: TemplateStringsArray, ...args: Array<RenderableValue>): CSSInstance => {

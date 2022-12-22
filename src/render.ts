@@ -1,7 +1,9 @@
-import { RenderContext } from "./types";
+import { GlobalContext } from "./types";
+import { html } from "./html";
+import { css } from "./css";
 import { isArray, isHTMLInstance, isNumber, isString, isTemplateInstance } from "./utils";
 
-export let render = (value: unknown, ctx: RenderContext): string => {
+export let render = (value: unknown, ctx: GlobalContext): string => {
   if (value !== null && value !== undefined) {
     if (isString(value)) return value;
     if (isNumber(value)) return value + "";
@@ -11,10 +13,10 @@ export let render = (value: unknown, ctx: RenderContext): string => {
     }
 
     if (isTemplateInstance(value)) {
-      const html = value.r(ctx);
+      const instance = value.r({ ctx, html, css });
 
-      if (isHTMLInstance(html)) {
-        return html.r(ctx);
+      if (isHTMLInstance(instance)) {
+        return instance.r(ctx);
       }
     }
   }

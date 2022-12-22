@@ -4,8 +4,7 @@ import dts from "vite-plugin-dts";
 export default defineConfig({
   plugins: [dts({ outputDir: "dist/tsc" })],
   build: {
-    minify: true,
-    // sourcemap: true,
+    minify: false,
     rollupOptions: {
       input: "src/index.ts",
       preserveEntrySignatures: "strict",

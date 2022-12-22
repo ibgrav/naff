@@ -1,11 +1,11 @@
-import type { RenderableValue, RenderContext } from "./types";
+import type { GlobalContext, RenderableValue } from "./types";
 import { render } from "./render";
 
 export let IS_HTML = Symbol("html");
 
 export interface HTMLInstance {
   t: typeof IS_HTML;
-  r: (ctx: RenderContext) => string;
+  r: (ctx: GlobalContext) => string;
 }
 
 export let html = (strings: TemplateStringsArray, ...args: Array<RenderableValue>): HTMLInstance => {

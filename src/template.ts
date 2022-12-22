@@ -1,5 +1,5 @@
+import type { RenderContext, TemplateContext } from "./types";
 import { HTMLInstance } from "./html";
-import { RenderContext, TemplateContext } from "./types";
 
 export let IS_TEMPLATE = Symbol("template");
 
@@ -16,7 +16,7 @@ export let template = <P = {}>(fn: TemplateDeclaration<P>): TemplateFactory<P> =
   return (props = {} as P) => {
     return {
       t: IS_TEMPLATE,
-      r: (ctx: RenderContext) => fn({ ...ctx, props }),
+      r: (ctx) => fn({ props, ...ctx }),
     };
   };
 };
